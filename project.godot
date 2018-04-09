@@ -11,12 +11,13 @@ config_version=3
 [application]
 
 config/name="Linux Game Jam 2018"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=960
+window/size/height=540
 
 [input]
 
