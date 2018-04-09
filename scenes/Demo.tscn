@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/ground_demo.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 
-[node name="Demo" type="Node" index="0"]
+[node name="Demo" type="Node"]
 
 [node name="Background" type="TileMap" parent="." index="0"]
 
