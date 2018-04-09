@@ -3,3 +3,7 @@
 *.import
 export.cfg
 export_presets.cfg
+*.tscn binary
+*.scn binary
+*.tres binary
+*.res binary
