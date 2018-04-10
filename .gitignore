@@ -3,4 +3,11 @@
 *.import
 export.cfg
 export_presets.cfg
+<<<<<<< HEAD
 ref/
+=======
+*.tscn binary
+*.scn binary
+*.tres binary
+*.res binary
+>>>>>>> 9831ccdf2830991171a02619f143c44a93f19ffc
