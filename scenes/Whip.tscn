@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Whip.gd" type="Script" id=1]
+
+[sub_resource type="SegmentShape2D" id=1]
+
+custom_solver_bias = 0.0
+a = Vector2( 0, 0 )
+b = Vector2( 192, 0 )
+
+[node name="Whip" type="KinematicBody2D" index="0"]
+
+visible = false
+input_pickable = false
+collision_layer = 2
+collision_mask = 3072
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="1"]
+
+polygon = PoolVector2Array( 0, -1, 192, -1, 192, 1, 0, 1 )
+uv = PoolVector2Array(  )
+color = Color( 1, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+

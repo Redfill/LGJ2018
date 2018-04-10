@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Whip.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -8,7 +9,7 @@ custom_solver_bias = 0.0
 radius = 30.0
 height = 64.0
 
-[node name="Player" type="KinematicBody2D" groups=[
+[node name="Player" type="KinematicBody2D" index="0" groups=[
 "Player",
 ]]
 
@@ -44,5 +45,10 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
+
+[node name="Whip" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -16 )
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
 
 
