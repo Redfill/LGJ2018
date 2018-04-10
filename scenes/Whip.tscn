@@ -8,7 +8,7 @@ custom_solver_bias = 0.0
 a = Vector2( 0, 0 )
 b = Vector2( 192, 0 )
 
-[node name="Whip" type="KinematicBody2D" index="0"]
+[node name="Whip" type="KinematicBody2D"]
 
 visible = false
 input_pickable = false
