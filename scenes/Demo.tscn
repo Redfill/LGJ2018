@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/ground_demo.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Stalagtite.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Cage.gd" type="Script" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = PoolVector2Array( 1760, 288, 1824, 288, 1824, 544, 1760, 544, 1632, 480, 1632, 352, 480, 992, 256, 992, 320, 928, 415, 928, 97, 480, 95, 480, 96, 96, 97, 288, 608, 96, 416, 288, 608, 288, 544, 480, 416, 416, 672, 288, 672, 480, 544, 608, 672, 608, 672, 736, 608, 736, 864, 288, 800, 288, 800, 160, 928, 96, 960, 160, 736, 160, 736, 96, 992, 96, 1824, 96, 1824, 160, 1760, 160, 1568, 352, 1568, 224, 1056, 224, 1120, 416, 1152, 352, 1440, 352, 1440, 608, 1312, 736, 1024, 736, 1568, 608, 1568, 480, 1760, 672, 1632, 736, 1824, 672, 1824, 992, 1696, 992, 1696, 928, 1632, 928, 1440, 736, 1440, 864, 1504, 864, 1504, 992, 1376, 992, 1376, 928, 1248, 928, 1248, 992, 736, 992, 928, 928, 736, 928, 928, 864, 1312, 864, 1056, 352, 1088, 352, 896, 608, 864, 416, 800, 800, 608, 800, 480, 736, 480, 800, 417, 800, 352, 480, 417, 928, 480, 928, 415, 800, 320, 800, 128, 992, 96, 992, 96, 608, 224, 608, 224, 416, 320, 416, 801, 608, 800, 416, 799, 736, 384, 416 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 9 ), PoolIntArray( 10, 11, 12, 13 ), PoolIntArray( 13, 12, 14, 15 ), PoolIntArray( 15, 14, 16, 17, 18 ), PoolIntArray( 16, 19, 20, 17 ), PoolIntArray( 21, 22, 23, 24 ), PoolIntArray( 25, 26, 27, 28, 29 ), PoolIntArray( 27, 30, 31, 28 ), PoolIntArray( 32, 33, 34, 35 ), PoolIntArray( 0, 5, 36, 37, 35 ), PoolIntArray( 32, 35, 37, 38, 29 ), PoolIntArray( 39, 40, 41, 42, 43, 44 ), PoolIntArray( 45, 46, 4, 3, 47, 48 ), PoolIntArray( 47, 49, 50, 51, 52 ), PoolIntArray( 52, 53, 48, 47 ), PoolIntArray( 45, 48, 54, 42 ), PoolIntArray( 55, 56, 57, 58, 59 ), PoolIntArray( 60, 61, 62, 63 ), PoolIntArray( 62, 64, 63 ), PoolIntArray( 60, 63, 65, 66 ), PoolIntArray( 59, 60, 66, 55 ), PoolIntArray( 54, 55, 66, 43 ), PoolIntArray( 42, 54, 43 ), PoolIntArray( 67, 68, 39, 44, 69, 70 ), PoolIntArray( 71, 72, 24, 23 ), PoolIntArray( 73, 74, 75, 76 ), PoolIntArray( 77, 78, 6 ), PoolIntArray( 77, 6, 9 ), PoolIntArray( 75, 77, 9, 79 ), PoolIntArray( 80, 81, 82, 83, 84 ), PoolIntArray( 80, 84, 85, 86, 76, 79 ), PoolIntArray( 25, 29, 38, 67, 70 ), PoolIntArray( 70, 69, 87, 88 ), PoolIntArray( 89, 88, 87, 71 ), PoolIntArray( 23, 89, 71 ), PoolIntArray( 21, 24, 73, 76 ), PoolIntArray( 75, 79, 76 ), PoolIntArray( 18, 17, 21, 76, 90 ) ]
+outlines = [ PoolVector2Array( 96, 96, 95, 480, 97, 480, 97, 288, 416, 288, 416, 416, 384, 416, 352, 480, 320, 416, 224, 416, 224, 608, 96, 608, 96, 992, 128, 992, 320, 800, 415, 800, 415, 928, 320, 928, 256, 992, 480, 992, 480, 928, 417, 928, 417, 800, 480, 800, 480, 736, 608, 736, 608, 800, 800, 800, 801, 608, 896, 608, 1024, 736, 1312, 736, 1312, 864, 928, 864, 928, 928, 736, 928, 736, 992, 1248, 992, 1248, 928, 1376, 928, 1376, 992, 1504, 992, 1504, 864, 1440, 864, 1440, 736, 1632, 736, 1632, 928, 1696, 928, 1696, 992, 1824, 992, 1824, 672, 1760, 672, 1760, 544, 1824, 544, 1824, 288, 1760, 288, 1760, 160, 1824, 160, 1824, 96, 992, 96, 960, 160, 928, 96, 736, 96, 736, 160, 800, 160, 800, 288, 864, 288, 864, 416, 800, 416, 799, 736, 672, 736, 672, 608, 544, 608, 544, 480, 672, 480, 672, 288, 608, 288, 608, 96 ), PoolVector2Array( 1056, 224, 1568, 224, 1568, 352, 1632, 352, 1632, 480, 1568, 480, 1568, 608, 1440, 608, 1440, 352, 1152, 352, 1120, 416, 1088, 352, 1056, 352 ) ]
 
 [node name="Demo" type="Node" index="0"]
 
@@ -66,9 +74,42 @@ position = Vector2( 352, 416 )
 
 position = Vector2( 1120, 352 )
 
-[node name="Player" parent="." index="5" instance=ExtResource( 3 )]
+[node name="Enemy" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 1248, 704 )
+
+[node name="Player" parent="." index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 96, 960 )
 collision_mask = 1024
+
+[node name="Navigation2D" type="Navigation2D" parent="." index="7"]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+
+position = Vector2( 7.62939e-06, 0 )
+navpoly = SubResource( 1 )
+enabled = true
+
+[node name="Cage" type="StaticBody2D" parent="." index="8"]
+
+input_pickable = false
+collision_layer = 4
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.04
+bounce = 0.0
+script = ExtResource( 5 )
+_sections_unfolded = [ "Collision" ]
+height = 64.0
+radius = 222.0
+translate = Vector2( 0, 39 )
 
 
