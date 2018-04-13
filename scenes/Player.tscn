@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Whip.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Cage.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -9,29 +10,23 @@ custom_solver_bias = 0.0
 radius = 30.0
 height = 64.0
 
-[node name="Player" type="KinematicBody2D" index="0" groups=[
+[node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
 
 input_pickable = false
 collision_layer = 1
-collision_mask = 1025
+collision_mask = 3072
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Material", "collision" ]
 gravity = 34.3
 fallFactor = 4.0
 walkSpeed = 300
+runSpeed = 600
 jumpSpeed = 940
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
-
-shape = SubResource( 1 )
-
-[node name="Placeholder" type="Polygon2D" parent="." index="1"]
+[node name="Placeholder" type="Polygon2D" parent="." index="0"]
 
 polygon = PoolVector2Array( -32, -64, 32, -64, 32, 64, -32, 64 )
 uv = PoolVector2Array(  )
@@ -46,9 +41,33 @@ texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
+
 [node name="Whip" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 0, -16 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
+
+[node name="Cage" type="StaticBody2D" parent="." index="3"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.04
+bounce = 0.0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cage" index="0"]
+
+position = Vector2( 0, -16 )
+build_mode = 1
+polygon = PoolVector2Array( 0, 270, 61.5989, 261.89, 119, 238.114, 168.291, 200.291, 206.114, 151, 229.89, 93.5989, 238, 32, 238, -32, 229.89, -93.5989, 206.114, -151, 168.291, -200.291, 119, -238.114, 61.5989, -261.89, 0, -270, -61.5989, -261.89, -119, -238.114, -168.291, -200.291, -206.114, -151, -229.89, -93.5989, -238, -32, -238, 32, -229.89, 93.5989, -206.114, 151, -168.291, 200.291, -119, 238.114, -61.5989, 261.89 )
+disabled = true
+_sections_unfolded = [ "Transform" ]
 
 
