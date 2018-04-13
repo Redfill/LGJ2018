@@ -1,8 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Whip.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/Cage.gd" type="Script" id=3]
+[ext_resource path="res://assets/player/animation/walk animation/F0.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/animation/walk animation/F1.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/animation/walk animation/F2.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/animation/walk animation/F3.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/animation/walk animation/F4.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/animation/walk animation/F5.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/animation/walk animation/F6.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walking",
+"speed": 15.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -26,48 +41,18 @@ walkSpeed = 300
 runSpeed = 600
 jumpSpeed = 940
 
-[node name="Placeholder" type="Polygon2D" parent="." index="0"]
+[node name="Whip" parent="." index="0" instance=ExtResource( 2 )]
 
-polygon = PoolVector2Array( -32, -64, 32, -64, 32, 64, -32, 64 )
-uv = PoolVector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation_degrees = 0.0
-invert_enable = false
-invert_border = 100.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
-shape = SubResource( 1 )
-
-[node name="Whip" parent="." index="2" instance=ExtResource( 2 )]
-
-position = Vector2( 0, -16 )
+position = Vector2( 0, -39 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 
-[node name="Cage" type="StaticBody2D" parent="." index="3"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.04
-bounce = 0.0
-script = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
+frames = SubResource( 2 )
+animation = "walking"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cage" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( 0, -16 )
-build_mode = 1
-polygon = PoolVector2Array( 0, 270, 61.5989, 261.89, 119, 238.114, 168.291, 200.291, 206.114, 151, 229.89, 93.5989, 238, 32, 238, -32, 229.89, -93.5989, 206.114, -151, 168.291, -200.291, 119, -238.114, 61.5989, -261.89, 0, -270, -61.5989, -261.89, -119, -238.114, -168.291, -200.291, -206.114, -151, -229.89, -93.5989, -238, -32, -238, 32, -229.89, 93.5989, -206.114, 151, -168.291, 200.291, -119, 238.114, -61.5989, 261.89 )
-disabled = true
-_sections_unfolded = [ "Transform" ]
+shape = SubResource( 1 )
 
 

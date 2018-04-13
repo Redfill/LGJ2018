@@ -14,16 +14,14 @@ var min_speed = 5
 var whip
 var cage
 var vp
+var sprite
 
 func _ready():
 	whip = get_node("Whip")
 	whip.connect("hit_stalagtite", self, "tether")
-	cage = get_node("Cage")
-	var parent = get_parent()
-	remove_child(cage)
-	parent.call_deferred("add_child", cage)
-	cage.call_deferred("set_owner", parent)
+	cage = get_parent().get_node("Cage")
 	vp = get_viewport()
+	sprite = get_node("AnimatedSprite")
 
 func _physics_process(delta):
 	if velocity.y > 0:
@@ -65,8 +63,15 @@ func set_movement_speed():
 			walk += runSpeed
 		else:
 			walk += walkSpeed
-	var walking
 	velocity.x = velocity.x * (1 - friction) + walk
+	if walk < 0:
+		sprite.flip_h = true
+	elif walk > 0:
+		sprite.flip_h = false
+	if abs(walk) > 5:
+		sprite.play("walking")
+	else:
+		sprite.stop()
 	if !is_tethered:
 		if is_on_floor() && Input.is_action_pressed("game_jump"):
 			velocity.y -= jumpSpeed
