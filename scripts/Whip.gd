@@ -1,4 +1,6 @@
-extends KinematicBody2D
+extends Area2D
+
+signal hit_stalagtite(object)
 
 func _ready():
 	pass
@@ -13,3 +15,7 @@ func whip():
 		get_node("Timer").start()
 		visible = true
 		get_node("CollisionShape2D").disabled = false
+
+func _on_Whip_body_entered(body):
+	if body.is_in_group("stalagtites"):
+		emit_signal("hit_stalagtite", body)

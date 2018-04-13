@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/main_menu.png" type="Texture" id=1]
 [ext_resource path="res://resources/MenuLabel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/NewGame.gd" type="Script" id=3]
+[ext_resource path="res://scripts/QuitGame.gd" type="Script" id=4]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -19,6 +21,7 @@ margin_right = 600.0
 margin_bottom = 178.0
 mouse_filter = 2
 text = "*** Pease Select ***"
+align = 0
 
 [node name="NewGame" parent="." index="2" instance=ExtResource( 2 )]
 
@@ -27,7 +30,8 @@ margin_top = 180.0
 margin_right = 600.0
 margin_bottom = 208.0
 text = "1> New Game"
-ActionName = "StartNewGame"
+align = 0
+script = ExtResource( 3 )
 
 [node name="Settings" parent="." index="3" instance=ExtResource( 2 )]
 
@@ -36,7 +40,7 @@ margin_top = 210.0
 margin_right = 600.0
 margin_bottom = 238.0
 text = "2> Settings"
-ActionName = "ShowSettings"
+align = 0
 
 [node name="Credits" parent="." index="4" instance=ExtResource( 2 )]
 
@@ -45,15 +49,16 @@ margin_top = 240.0
 margin_right = 600.0
 margin_bottom = 268.0
 text = "3> Credits"
-ActionName = "ShowCredits"
+align = 0
 
 [node name="Quit" parent="." index="5" instance=ExtResource( 2 )]
 
-margin_left = 340.0
+margin_left = 343.0
 margin_top = 270.0
-margin_right = 600.0
+margin_right = 603.0
 margin_bottom = 298.0
 text = "4> Quit"
-ActionName = "QuitGame"
+align = 0
+script = ExtResource( 4 )
 
 
