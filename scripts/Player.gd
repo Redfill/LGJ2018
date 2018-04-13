@@ -11,17 +11,13 @@ var is_tethered = false
 var tethered_to = Vector2()
 var min_speed = 5
 
-var whip
-var cage
-var vp
-var sprite
+onready var whip = get_node("Whip")
+onready var cage = get_parent().get_node("Cage")
+onready var camera = get_node("Camera2D")
+onready var sprite = get_node("AnimatedSprite")
 
 func _ready():
-	whip = get_node("Whip")
 	whip.connect("hit_stalagtite", self, "tether")
-	cage = get_parent().get_node("Cage")
-	vp = get_viewport()
-	sprite = get_node("AnimatedSprite")
 
 func _physics_process(delta):
 	if velocity.y > 0:
@@ -33,7 +29,7 @@ func _physics_process(delta):
 	if is_tethered:
 		whip.rotation = whip.global_position.angle_to_point(tethered_to) + PI
 	if !is_tethered && Input.is_action_just_pressed("game_whip"):
-		whip.rotation = whip.get_angle_to(vp.get_mouse_position())
+		whip.rotation = whip.get_angle_to(camera.get_global_mouse_position())
 		whip.whip()
 	velocity = move_and_slide(velocity, Vector2(0, -1), min_speed)
 
